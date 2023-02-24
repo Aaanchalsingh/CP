@@ -1,0 +1,36 @@
+//LEETCODE PROBLEM 2259
+string removeDigit(string number, char digit) {
+    int n = number.size();
+    string res = "0";
+
+    for (int i = 0; i < n; i++) {
+        if (number[i] == digit) {
+            // remove the current occurrence of the digit
+            string temp = number.substr(0, i) + number.substr(i + 1);
+            if (compare(temp,res)>0) {
+                res = temp;
+            }
+        }
+    }
+
+    return res;
+}
+
+int compare(string s1, string s2) {
+    int n1 = s1.size(), n2 = s2.size();
+    if (n1 != n2) {
+        return n1 < n2 ? -1 : 1;
+    }
+    for (int i = 0; i < n1; i++) {
+        if (s1[i] != s2[i]) {
+            return s1[i] < s2[i] ? -1 : 1;
+        }
+    }
+    return 0;
+}
+//WHAT I LEARNT TODAY
+1.USE OF SUBSTRING METHOD
+2.BY LOOKING AT STRING CONTAINING NUMBERS DO NOT DIRECTLY JUMP INTO CONVERTING IT INTO INT 
+3.HARDLY EVER USE STOI,ATOL;
+4. STROLL() IS WAY BETTER THAN THESE
+5.NEVER COMPLICATE THINGS TOO MUCH
