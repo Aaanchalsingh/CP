@@ -1,0 +1,18 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s1=sc.nextLine();
+        if(s1.length()>1){
+        char s[]=s1.toCharArray();
+        String n="";
+        for(int i=0;i<s.length;i++){
+            if(s[i]!=' ') n+=Character.toUpperCase(s[i]);
+            else n+='#';
+        }
+        System.out.println(n);}
+    }
+}
