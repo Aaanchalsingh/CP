@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        int n1=num1.size(),n2=num2.size();
+        string ans="";int carry=0;
+        int i=n1-1,j=n2-1;//9 1
+        while(i>=0||j>=0){
+            if(i<0){
+                ans.push_back(((num2[j]-48+carry)%10)+48);
+                carry=(num2[j]-48+carry)/10;
+                j--;
+            }
+            else if(j<0){
+                ans.push_back(((num1[i]-48+carry)%10)+48);
+                carry=(num1[i]-48+carry)/10;
+                i--;
+            }
+            else{
+                ans.push_back(((num1[i]-48+num2[j]-48+carry)%10)+48);
+                carry=(num1[i]-48+num2[j]-48+carry)/10;
+                i--;j--;
+            }
+        }
+        if(carry==1) ans.push_back(carry+48);
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
